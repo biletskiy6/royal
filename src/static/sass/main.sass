@@ -2,6 +2,7 @@
 @import "libs"
 @import "fonts"
 @import "_mixins/mixins"
+@import "_smart-grid"
 
 
 
@@ -15,17 +16,23 @@
 html, body
 	height: 100%
 
+img
+	max-width: 100%
+	height: auto
 html
 	box-sizing: border-box
 	*, *:before, *:after
 		box-sizing: inherit
-
+a
+	text-decoration: none
+	outline: none
 body
-	font-size: 16px
+	font-size: 14px
 	min-width: 320px
 	position: relative
-	line-height: 1.65
+	line-height: 1.2
 	font-family: $default-font
+	color: $text-color
 	overflow-x: hidden
 	input, textarea
 			border: #666 1px solid
@@ -35,5 +42,268 @@ body
 			&:required:valid
 				border-color: green
 
+.button
+	display: inline-block
+	background-color: $accent
+	text-transform: uppercase
+	color: #fff
+	font-size: 16px
+	padding: 20px 50px
+	transition: background-color .25s ease
+	&:hover
+		background-color: rgba($accent, .8)
+	&--slider
+		margin-top: 50px
+
+.section
+	padding: 100px 0
+	&-header
+		position: relative
+		z-index: 5
+		text-align: center
+		&__content
+			display: inline-block
+			position: relative
+			h2
+				position: relative
+				margin: 0
+				color: $section-header
+				max-width: 370px
+				font-size: 35px
+				transform: translateY(-70%)
+				&::after
+					position: absolute
+					content: ''
+					width: 110px
+					height: 2px
+					bottom: -40px
+					left: 50%
+					transform: translateX(-50%)
+					background-color: #a7a99a
+
+		
+			p
+				margin: 0
+				font-size: 14px
+				text-transform: uppercase
+				position: absolute
+				top: 0
+				left: 50%
+				transform: translateX(-50%)
+			img
+				opacity: .2
+.container
+	+wrapper()
+.top-line
+	padding: 25px 0
+	background-color: $top-line
+	&__wrapper
+		text-align: center
+.main-menu
+	list-style-type: none
+	margin: 0
+	padding: 0
+	display: flex
+	justify-content: center
+	li
+		border-right: 1px solid $menu-border
+		&:first-child
+			a
+				padding-right: 30px
+		&:last-child
+			border: none
+	a
+		display: block
+		color: inherit
+		text-transform: uppercase
+		padding: 0 20px
+		line-height: 1.2
+		transition: color .25s ease
+		&:hover
+			color: $accent
+	
+		.fa-home
+			color: #000
+.top-info
+	min-height: 150px
+	&__wrapper
+		display: flex
+		justify-content: space-between
+		min-height: 150px
+		height: 150px
+		//align-items: center
+	&__logo
+		position: relative
+		flex: 1 1 68%
+		display: flex
+		align-items: center
+		a
+			display: flex
+			align-items: center
+			position: absolute
+			left: 50%
+			top: 50%
+			transform: translate(-50%, -50%)
+			z-index: 10
+		h3
+			font-family: $Yellowtail
+			max-width: 100px
+			font-size: 44px
+			line-height: 0.6
+			color: #434343
+			text-align: center
+			top: 0
+		h3, p
+			position: absolute
+			left: 50%
+			transform: translateX(-50%)
+			margin: 0
+		p
+			align-self: flex-end
+			text-transform: uppercase
+			color: $text-color
+			bottom: 0
+	&__cart
+		flex: 0 1 16%
+		text-transform: uppercase
+		align-self: center
+		&-top
+			.fa-shopping-cart
+				margin-right: 5px
+	&__contacts
+		flex: 0 1 16%
+		text-align: right 
+		align-self: center
+		
+	&__mail
+		display: block
+		text-transform: uppercase
+	&__phone, &__mail
+		color: inherit
+		transition: color .25s ease
+		&:hover
+			color: $accent
+
+.slider-items
+	position: relative
+	&::before, &::after
+		position: absolute
+		content: ''
+		left: 50%
+		transform: translateX(-50%)
+		z-index: 2
+		border-radius: 50%
+		width: 176px
+		height: 176px
+		background-color: #fff
+	&::before
+		top: -130px
+	&::after
+		bottom: -130px
+
+.main-slider
+	position: relative
+	&__arrow
+		position: absolute
+		display: block
+		bottom: 0
+		z-index: 10
+		left: 50%
+		transform: translateX(-50%)
+		.fa-caret-down
+			color: $text-color
+			font-size: 17px
+
+.slider-item
+	position: relative
+	width: 100%
+	height: 768px
+	background-size: cover
+	background-position: bottom top
+	background-repeat: no-repeat
+	background-color: #232323
+	&::before
+		position: absolute
+		content: ''
+		width: 100%
+		height: 100%
+		left: 0
+		top: 0
+		background-color: #000
+		opacity: .5
+.slider-content
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+	z-index: 1
+	text-align: center
+	h2
+		position: relative
+		color: #fff
+		font-size: 60px
+		text-align: center
+		text-transform: uppercase
+		line-height: 60px
+		&::before, &::after
+			position: absolute
+			content: ''
+			left: 50%
+			transform: translateX(-50%)
+			width: 100px
+			height: 2px
+			background-color: #fff
+		&::after
+			bottom: -40px
+		&::before
+			top: -40px
+.welcome-main
+	&__wrapper
+		text-align: center
+.welcome-items
+	+row-flex()
+	margin: 40px 0 70px 
+.welcome-item
+	position: relative
+	text-align: center
+	+col()
+	+size(4)
+	height: 470px
+	background-size: cover
+	background-position: center center
+	background-repeat: no-repeat
+	&::before
+		position: absolute
+		content: ''
+		left: 0
+		top: 0
+		background-color: #000
+		opacity: .4
+		width: 100%
+		height: 100%
+	h3
+		font-family: $Yellowtail
+		font-size: 45px
+		max-width: 120px
+		line-height: 35px
+		margin: 0
+		position: absolute
+		color: #fff
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+	&__arrow
+		display: block
+		width: 80px
+		height: 60px
+		line-height: 60px
+		margin-bottom: -30px
+		background-color: #fff
+		border-radius: 50%
+		position: absolute
+		bottom: 0
+		left: 50%
+		transform: translateX(-50%)
 
 @import "media"
+

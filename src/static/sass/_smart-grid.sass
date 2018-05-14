@@ -1,0 +1,308 @@
+$columns: 12
+$atom: (100% / $columns)
+
+$break_desktop: 992px
+$break_tablet: 768px
+$break_phone: 576px
+
+$offset: 30px
+$offset_desktop: $offset
+$offset_tablet: $offset
+$offset_phone: $offset
+
+$offset_one_side: ($offset / 2)
+$offset_desktop_one_side: ($offset_desktop / 2)
+$offset_tablet_one_side: ($offset_tablet / 2)
+$offset_phone_one_side: ($offset_phone / 2)
+
+$fields: 20px
+$fields_desktop: 20px
+$fields_tablet: 15px
+$fields_phone: 10px
+
+=wrapper-full()
+    padding-left: $fields
+    padding-right: $fields
+
+    +desktop-block()
+        padding-left: $fields_desktop
+        padding-right: $fields_desktop
+
+    +tablet-block()
+        padding-left: $fields_tablet
+        padding-right: $fields_tablet
+
+    +phone-block()
+        padding-left: $fields_phone
+        padding-right: $fields_phone
+
+=row-offsets()
+    margin-left: ($offset_one_side * -1)
+    margin-right: ($offset_one_side * -1)
+
+=col-offsets($type)
+    #{$type}-left: $offset_one_side
+    #{$type}-right: $offset_one_side
+
+=wrapper()
+    max-width: 1170px
+    margin: 0 auto
+    +wrapper-full()
+
+=row-flex()
+    display: flex
+    flex-wrap: wrap
+    +row-offsets()
+
+=row-float()
+    +row-offsets()
+    +clearfix()
+
+=row-ib()
+    +row-offsets()
+
+=col()
+    box-sizing: border-box
+    word-wrap: break-word
+    +col-offsets(margin)
+
+=col-float()
+    float: left
+
+=col-ib()
+    display: inline-block
+    vertical-align: top
+
+=col-padding()
+    word-wrap: break-word
+    +col-offsets(padding)
+
+=size($n)
+    $val: 100% / $columns * $n
+    width: #{calc(#{$val} - #{$offset})}
+
+=size-desktop($n)
+    $val: 100% / $columns * $n
+    +desktop(width, #{calc(#{$val} - #{$offset_desktop})})
+
+=size-tablet($n)
+    $val: 100% / $columns * $n
+    +tablet(width, #{calc(#{$val} - #{$offset_tablet})})
+
+=size-phone($n)
+    $val: 100% / $columns * $n
+    +phone(width, #{calc(#{$val} - #{$offset_phone})})
+
+=shift($n)
+    $val: 100% / $columns * $n
+    margin-left: #{calc(#{$val} + #{$offset_one_side})}
+    margin-right: #{calc(#{$val} + #{$offset_one_side})}
+
+=shift-left($n)
+    $val: 100% / $columns * $n
+    margin-left: #{calc(#{$val} + #{$offset_one_side})}
+
+=shift-right($n)
+    $val: 100% / $columns * $n
+    margin-right: #{calc(#{$val} + #{$offset_one_side})}
+
+=shift-padding($n)
+    $val: 100% / $columns * $n
+    padding-left: #{calc(#{$val} + #{$offset_one_side})}
+    padding-right: #{calc(#{$val} + #{$offset_one_side})}
+
+=shift-padding-left($n)
+    $val: 100% / $columns * $n
+    padding-left: #{calc(#{$val} + #{$offset_one_side})}
+
+=shift-padding-right($n)
+    $val: 100% / $columns * $n
+    padding-right: #{calc(#{$val} + #{$offset_one_side})}
+
+=shift-desktop($n)
+    $val: 100% / $columns * $n
+    +desktop(margin-left, #{calc(#{$val} + #{$offset_desktop_one_side})})
+    +desktop(margin-right, #{calc(#{$val} + #{$offset_desktop_one_side})})
+
+=shift-desktop-left($n)
+    $val: 100% / $columns * $n
+    +desktop(margin-left, #{calc(#{$val} + #{$offset_desktop_one_side})})
+
+=shift-desktop-right($n)
+    $val: 100% / $columns * $n
+    +desktop(margin-right, #{calc(#{$val} + #{$offset_desktop_one_side})})
+
+=shift-desktop-padding($n)
+    $val: 100% / $columns * $n
+    +desktop(padding-left, #{calc(#{$val} + #{$offset_desktop_one_side})})
+    +desktop(padding-right, #{calc(#{$val} + #{$offset_desktop_one_side})})
+
+=shift-desktop-padding-left($n)
+    $val: 100% / $columns * $n
+    +desktop(padding-left, #{calc(#{$val} + #{$offset_desktop_one_side})})
+
+=shift-desktop-padding-right($n)
+    $val: 100% / $columns * $n
+    +desktop(padding-right, #{calc(#{$val} + #{$offset_desktop_one_side})})
+
+=shift-tablet($n)
+    $val: 100% / $columns * $n
+    +tablet(margin-left, #{calc(#{$val} + #{$offset_tablet_one_side})})
+    +tablet(margin-right, #{calc(#{$val} + #{$offset_tablet_one_side})})
+
+=shift-tablet-left($n)
+    $val: 100% / $columns * $n
+    +tablet(margin-left, #{calc(#{$val} + #{$offset_tablet_one_side})})
+
+=shift-tablet-right($n)
+    $val: 100% / $columns * $n
+    +tablet(margin-right, #{calc(#{$val} + #{$offset_tablet_one_side})})
+
+=shift-tablet-padding($n)
+    $val: 100% / $columns * $n
+    +tablet(padding-left, #{calc(#{$val} + #{$offset_tablet_one_side})})
+    +tablet(padding-right, #{calc(#{$val} + #{$offset_tablet_one_side})})
+
+=shift-tablet-padding-left($n)
+    $val: 100% / $columns * $n
+    +tablet(padding-left, #{calc(#{$val} + #{$offset_tablet_one_side})})
+
+=shift-tablet-padding-right($n)
+    $val: 100% / $columns * $n
+    +tablet(padding-right, #{calc(#{$val} + #{$offset_tablet_one_side})})
+
+=shift-phone($n)
+    $val: 100% / $columns * $n
+    +phone(margin-left, #{calc(#{$val} + #{$offset_phone_one_side})})
+    +phone(margin-right, #{calc(#{$val} + #{$offset_phone_one_side})})
+
+=shift-phone-left($n)
+    $val: 100% / $columns * $n
+    +phone(margin-left, #{calc(#{$val} + #{$offset_phone_one_side})})
+
+=shift-phone-right($n)
+    $val: 100% / $columns * $n
+    +phone(margin-right, #{calc(#{$val} + #{$offset_phone_one_side})})
+
+=shift-phone-padding($n)
+    $val: 100% / $columns * $n
+    +phone(padding-left, #{calc(#{$val} + #{$offset_phone_one_side})})
+    +phone(padding-right, #{calc(#{$val} + #{$offset_phone_one_side})})
+
+=shift-phone-padding-left($n)
+    $val: 100% / $columns * $n
+    +phone(padding-left, #{calc(#{$val} + #{$offset_phone_one_side})})
+
+=shift-phone-padding-right($n)
+    $val: 100% / $columns * $n
+    +phone(padding-right, #{calc(#{$val} + #{$offset_phone_one_side})})
+
+=desktop($name, $value)
+    @media screen and (max-width: $break_desktop)
+        #{$name}: $value
+
+=desktop-block()
+    @media screen and (max-width: $break_desktop)
+        @content
+
+=tablet($name, $value)
+    @media screen and (max-width: $break_tablet)
+        #{$name}: $value
+
+=tablet-block()
+    @media screen and (max-width: $break_tablet)
+        @content
+
+=phone($name, $value)
+    @media screen and (max-width: $break_phone)
+        #{$name}: $value
+
+=phone-block()
+    @media screen and (max-width: $break_phone)
+        @content
+
+=from($min_width)
+    @media screen and (min-width: $min_width)
+        @content
+
+=to($max_width)
+    @media screen and (max-width: $max_width)
+        @content
+
+=from-to($min_width, $max_width)
+    @media screen and (min-width: $min_width) and (max-width: $max_width)
+        @content
+
+=reset()
+    body,div,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,input,textarea,p,blockquote,th,td
+        margin: 0
+        padding: 0
+    
+    table
+        border-collapse: collapse
+        border-spacing: 0
+    
+    fieldset,img,abbr
+        border: 0
+    
+    address,caption,cite,code,dfn,em,strong,th,var
+        font-style: normal
+        font-weight: normal
+    
+    ul li
+        list-style: none
+    
+    caption,th
+        text-align: left
+    
+    h1,h2,h3,h4,h5,h6
+        font-size: 100%
+        font-weight: normal
+    
+    sup
+        vertical-align: text-top
+    
+    sub
+        vertical-align: text-bottom
+    
+    input,textarea,select
+        font-family: inherit
+        font-size: inherit
+        font-weight: inherit
+    
+    legend
+        color: #000
+    
+    article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,main
+        display: block
+    
+    img
+        max-width: 100%
+        height: auto
+
+=debug($background, $outline)
+    height: 100vh
+    position: fixed
+    width: 100%
+    
+    > div
+        height: inherit
+        +wrapper()
+        
+        > div
+            height: inherit
+            +row-flex()
+            
+            > div
+                +col()
+                +size(1)
+                height: inherit
+                outline: $outline
+                background: $background
+
+=clearfix()
+    &::after
+        display: block
+        content: ""
+        clear: both
+    

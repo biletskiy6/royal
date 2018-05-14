@@ -1,4 +1,4 @@
 $(function(){
 	svg4everybody();
-	// Custom Js
+	$('.slider-items').slick();
 });
